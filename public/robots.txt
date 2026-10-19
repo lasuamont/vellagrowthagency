@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vellagrowth.com/sitemap.xml
+
+# Crawl delay for polite crawling
+Crawl-delay: 2
+
+# Googlebot specific
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Bingbot specific
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
