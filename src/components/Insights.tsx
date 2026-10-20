@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Lightbulb, BookOpen, HelpCircle } from "lucide-react";
 import Button from "./Button";
 
@@ -82,6 +83,25 @@ export default function Insights() {
           <p className="font-montserrat text-ink-navy text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
             Explore our insights on travel marketing, SEO, GEO, and digital growth strategies tailored for the travel industry.
           </p>
+        </div>
+
+        {/* Featured Article */}
+        <div className="mb-12">
+          <div className="bg-gradient-to-br from-ink-navy to-midnight rounded-[16px] p-8 border border-ink-navy/20">
+            <p className="label-text text-champagne mb-4">Featured Article</p>
+            <h3 className="font-cormorant font-500 text-cream text-2xl md:text-3xl mb-4">
+              From LinkedIn to Qualified Leads: How Our Conversion Funnel Turns Prospects into Clients
+            </h3>
+            <p className="font-montserrat text-cream/80 text-base leading-relaxed mb-6">
+              Discover our five-stage conversion funnel strategy: LinkedIn post → Blog article → Live public webinar → Booking of a free demo. Learn how we attract, educate, and convert prospects into qualified leads.
+            </p>
+            <Link
+              href="/blog/conversion-funnel"
+              className="inline-flex items-center gap-2 font-montserrat text-champagne hover:text-cream transition-colors text-sm uppercase tracking-wider"
+            >
+              Read Article &rarr;
+            </Link>
+          </div>
         </div>
 
         {/* Insight Cards */}

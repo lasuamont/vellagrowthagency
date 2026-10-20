@@ -24,6 +24,7 @@ export default function Header() {
     { label: "Why Vella", href: "#why-vella" },
     { label: "Results", href: "#results" },
     { label: "Insights", href: "#insights" },
+    { label: "Blog", href: "/blog" },
     { label: "Contact", href: "#contact" },
   ];
 
