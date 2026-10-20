@@ -19,7 +19,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Vella Growth | Destination Growth, Made Simple",
+  title: "Vella Growth | The Marketing Agency for DMCs",
   description: "We help DMCs and concierge travel companies get found in search and AI answers, turn visibility into qualified enquiries, and grow direct bookings.",
   applicationName: "Vella Growth",
   authors: [{ name: "Vella Growth" }],
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Vella Growth | Destination Growth, Made Simple",
+    title: "Vella Growth | The Marketing Agency for DMCs",
     description: "We help DMCs and concierge travel companies get found in search and AI answers, turn visibility into qualified enquiries, and grow direct bookings.",
     url: "https://vellagrowth.com",
     siteName: "Vella Growth",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vella Growth | Destination Growth, Made Simple",
+    title: "Vella Growth | The Marketing Agency for DMCs",
     description: "We help DMCs and concierge travel companies get found in search and AI answers, turn visibility into qualified enquiries, and grow direct bookings.",
     creator: "@VellaGrowth",
     images: ["https://vellagrowth.com/og-image.jpg"],

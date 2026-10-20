@@ -18,17 +18,14 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-20">
         <div className="max-w-4xl">
-          {/* Label */}
-          <p className="label-text mb-6">Destination Growth, Made Simple</p>
-
-          {/* Headline */}
-          <h1 className="font-cormorant font-500 text-cream text-5xl md:text-7xl lg:text-8xl leading-tight md:leading-tight lg:leading-tight mb-8">
-            Grow where travellers look.
+          {/* Headline: the largest text on the page (46px mobile, 76px desktop) */}
+          <h1 className="font-cormorant font-medium text-cream text-[46px] leading-[1.05] md:text-[76px] text-balance mb-8">
+            The marketing agency for DMCs.
           </h1>
 
-          {/* Subtitle */}
+          {/* Subtitle: the three services */}
           <p className="font-montserrat text-cream text-lg md:text-xl lg:text-2xl leading-relaxed mb-10 max-w-2xl">
-            We help DMCs and concierge travel companies get found in search and AI answers, turn visibility into qualified enquiries, and grow direct bookings.
+            Digitalisation, SEO and GEO, so travellers find you on Google and in ChatGPT.
           </p>
 
           {/* CTA Buttons */}
@@ -55,7 +52,7 @@ export default function Hero() {
       <div className="absolute bottom-0 left-0 right-0 z-10 bg-ink-navy/80 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <p className="label-text text-cream">
-            Serving: Destination Management Companies &middot; Concierge Travel &middot; Destination Specialists
+            For DMCs &middot; Concierge Travel &middot; Destination Specialists
           </p>
         </div>
       </div>

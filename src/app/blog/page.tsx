@@ -83,8 +83,8 @@ export default function BlogPage() {
 
         {/* CTA */}
         <div className="mt-20 text-center">
-          <Button variant="secondary" size="lg" href="/#insights">
-            Back to Insights
+          <Button variant="secondary" size="lg" href="/">
+            Back to Home
           </Button>
         </div>
       </div>
