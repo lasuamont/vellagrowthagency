@@ -1,23 +1,28 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 import { LinkIcon } from "lucide-react";
 
 export default function Footer() {
-  const scrollToSection = (href: string) => {
-    const section = document.querySelector(href);
+  const isHome = usePathname() === "/";
+
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
+    if (!isHome) return;
+    const section = document.querySelector(href.slice(1));
     if (section) {
+      e.preventDefault();
       section.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
   const navItems = [
-    { label: "Services", href: "#services" },
-    { label: "Why Vella", href: "#why-vella" },
-    { label: "Results", href: "#results" },
-    { label: "Insights", href: "#insights" },
-    { label: "Contact", href: "#contact" },
+    { label: "Services", href: "/#services" },
+    { label: "Why Vella", href: "/#why-vella" },
+    { label: "Results", href: "/#results" },
+    { label: "Insights", href: "/#insights" },
+    { label: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -43,10 +48,7 @@ export default function Footer() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(item.href);
-                  }}
+                  onClick={(e) => handleNavClick(e, item.href)}
                   className="block font-montserrat text-cream/80 hover:text-champagne transition-colors duration-200 text-sm"
                 >
                   {item.label}
@@ -61,13 +63,13 @@ export default function Footer() {
               Services
             </h4>
             <nav className="space-y-3">
-              <Link href="#services" className="block font-montserrat text-cream/80 hover:text-champagne transition-colors duration-200 text-sm">
+              <Link href="/#services" className="block font-montserrat text-cream/80 hover:text-champagne transition-colors duration-200 text-sm">
                 Digitalisation
               </Link>
-              <Link href="#services" className="block font-montserrat text-cream/80 hover:text-champagne transition-colors duration-200 text-sm">
+              <Link href="/#services" className="block font-montserrat text-cream/80 hover:text-champagne transition-colors duration-200 text-sm">
                 SEO
               </Link>
-              <Link href="#services" className="block font-montserrat text-cream/80 hover:text-champagne transition-colors duration-200 text-sm">
+              <Link href="/#services" className="block font-montserrat text-cream/80 hover:text-champagne transition-colors duration-200 text-sm">
                 GEO
               </Link>
             </nav>

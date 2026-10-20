@@ -29,7 +29,7 @@ const articles: ArticleCard[] = [
 
 export default function BlogPage() {
   return (
-    <main className="min-h-screen bg-cream py-20 md:py-32">
+    <main className="min-h-screen bg-cream pt-36 pb-20 md:pt-44 md:pb-32">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">

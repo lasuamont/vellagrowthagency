@@ -26,7 +26,7 @@ export default function ConversionFunnelArticle() {
   return (
     <main className="min-h-screen bg-cream">
       {/* Article Header */}
-      <section className="bg-gradient-to-br from-ink-navy to-midnight py-20 md:py-32">
+      <section className="bg-gradient-to-br from-ink-navy to-midnight pt-36 pb-20 md:pt-44 md:pb-32">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <p className="label-text text-champagne mb-4">Strategy</p>
           <h1 className="font-cormorant font-500 text-cream text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
