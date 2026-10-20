@@ -14,19 +14,19 @@ const processSteps: ProcessStep[] = [
   {
     icon: <Search size={24} className="text-champagne" />,
     title: "Audit",
-    description: "Understand the current website, search visibility and opportunities.",
+    description: "Find where you lose visibility and enquiries.",
     step: "01",
   },
   {
     icon: <Hammer size={24} className="text-champagne" />,
     title: "Build",
-    description: "Improve the digital foundations and implement a focused strategy.",
+    description: "Fix the foundations that matter most first.",
     step: "02",
   },
   {
     icon: <TrendingUp size={24} className="text-champagne" />,
     title: "Grow",
-    description: "Measure enquiries and business outcomes, then improve what works.",
+    description: "Report on enquiries, not vanity metrics, and improve what works.",
     step: "03",
   },
 ];
@@ -47,28 +47,25 @@ export default function WhyVella() {
           <div>
             <p className="label-text mb-4">Why Vella</p>
             <h2 className="font-cormorant font-500 text-ink-navy text-4xl md:text-5xl lg:text-6xl leading-tight mb-8">
-              A growth partner that understands the travel trade.
+              We only work with travel companies.
             </h2>
-            <p className="font-montserrat text-ink-navy text-lg leading-relaxed mb-8">
-              Vella focuses exclusively on travel companies. We understand the unique challenges and opportunities that DMCs and concierge travel businesses face. This specialist knowledge means we can deliver more effective, targeted solutions.
-            </p>
             <p className="font-montserrat text-ink-navy text-lg leading-relaxed mb-10">
-              Unlike generic digital agencies, we speak the language of travel professionals. We understand destinations, itineraries, travel partners and bookings. This industry-specific expertise allows us to create strategies that truly resonate with your target audience.
+              We know how DMCs sell: through partners, itineraries and trust. One team handles your website, search and AI visibility, so you stop juggling suppliers.
             </p>
             <Button
               variant="primary"
               size="lg"
               onClick={() => scrollToSection("#contact")}
             >
-              See How We Work
+              Book a Free Audit
             </Button>
           </div>
 
           {/* Right - Process Steps */}
           <div className="space-y-8">
-            {processSteps.map((step, index) => (
+            {processSteps.map((step) => (
               <div
-                key={index}
+                key={step.step}
                 className="bg-cream rounded-[16px] p-8 border border-stone"
               >
                 <div className="flex items-start gap-6">
@@ -89,19 +86,6 @@ export default function WhyVella() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Agency Introduction */}
-        <div className="mt-20 bg-ink-navy rounded-[16px] p-10 md:p-16">
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="label-text text-champagne mb-6">Our Approach</p>
-            <p className="font-montserrat text-cream text-lg md:text-xl leading-relaxed mb-8">
-              At Vella, we believe that digital growth should be simple, measurable and built around your specific business needs. We work collaboratively with our clients, taking the time to understand their unique challenges and opportunities. Our approach combines industry expertise with proven digital strategies to deliver real, sustainable growth.
-            </p>
-            <p className="font-montserrat text-cream text-lg md:text-xl leading-relaxed">
-              We focus on practical improvements that deliver measurable business outcomes. Whether it is increasing your search visibility, optimizing your booking journey, or ensuring your information is AI-ready, we help you achieve more qualified enquiries and direct bookings.
-            </p>
           </div>
         </div>
       </div>

@@ -1,7 +1,4 @@
-"use client";
-
 import { Compass, Globe, Network } from "lucide-react";
-import Button from "./Button";
 
 interface ServiceItem {
   icon: React.ReactNode;
@@ -14,50 +11,40 @@ const services: ServiceItem[] = [
   {
     icon: <Network size={28} className="text-champagne" />,
     title: "Digitalisation",
-    description: "Help websites, booking journeys and CRM systems work together more effectively. Focus on practical improvements that make the customer journey easier to manage.",
-    label: "Modern Foundations",
+    description: "Your website, booking journey and CRM working together, so no enquiry gets lost in an inbox.",
+    label: "Website and CRM",
   },
   {
     icon: <Globe size={28} className="text-champagne" />,
     title: "SEO",
-    description: "Help travel companies become more visible when potential clients search for destinations, experiences and relevant travel services.",
-    label: "Search Visibility",
+    description: "Rank on Google when clients search for your destinations. Impact typically shows within 3 to 6 months.",
+    label: "Google",
   },
   {
     icon: <Compass size={28} className="text-champagne" />,
     title: "GEO",
-    description: "Help travel companies make their online information clearer and easier for AI assistants such as ChatGPT and Gemini to understand and potentially reference.",
-    label: "AI Recommendations",
+    description: "Travellers now ask ChatGPT and Gemini who to book with. We make your company clear for AI assistants to find and mention.",
+    label: "AI assistants",
   },
 ];
 
 export default function Services() {
-  const scrollToSection = (href: string) => {
-    const section = document.querySelector(href);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
   return (
     <section id="services" className="bg-cream py-20 md:py-32">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
           <p className="label-text mb-4">What We Do</p>
-          <h2 className="font-cormorant font-500 text-ink-navy text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
-            Digital growth, built around travel.
+          <h2 className="font-cormorant font-500 text-ink-navy text-4xl md:text-5xl lg:text-6xl leading-tight">
+            Three services. One travel specialist.
           </h2>
-          <p className="font-montserrat text-ink-navy text-lg leading-relaxed">
-            We focus on three key areas to help travel companies thrive in the digital landscape.
-          </p>
         </div>
 
         {/* Service Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {services.map((service, index) => (
+          {services.map((service) => (
             <div
-              key={index}
+              key={service.title}
               className="bg-stone rounded-[16px] p-8 hover:shadow-soft transition-shadow duration-300 group"
             >
               <div className="flex items-start gap-4 mb-6">
@@ -71,25 +58,11 @@ export default function Services() {
                   </h3>
                 </div>
               </div>
-              <p className="font-montserrat text-ink-navy text-base leading-relaxed mb-6">
+              <p className="font-montserrat text-ink-navy text-base leading-relaxed">
                 {service.description}
               </p>
-              <Button variant="tertiary" size="sm">
-                Learn More
-              </Button>
             </div>
           ))}
-        </div>
-
-        {/* CTA */}
-        <div className="mt-16 text-center">
-          <Button
-            variant="secondary"
-            size="lg"
-            onClick={() => scrollToSection("#contact")}
-          >
-            Explore Our Services
-          </Button>
         </div>
       </div>
     </section>

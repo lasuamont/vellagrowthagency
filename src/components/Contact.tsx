@@ -96,20 +96,11 @@ export default function Contact() {
           <div>
             <p className="label-text mb-4">Contact</p>
             <h2 className="font-cormorant font-500 text-ink-navy text-4xl md:text-5xl lg:text-6xl leading-tight mb-8">
-              Let&apos;s look at your visibility.
+              Get your free visibility audit.
             </h2>
-            <p className="font-montserrat text-ink-navy text-lg leading-relaxed mb-8">
-              Tell us a little about your business. We&apos;ll look at your online presence and identify opportunities worth exploring.
+            <p className="font-montserrat text-ink-navy text-lg leading-relaxed">
+              Share your website. We review your search visibility, AI visibility and digital foundations, then send a short report with clear priorities. We reply within one business day.
             </p>
-            
-            <div className="bg-cream rounded-[16px] p-6 border border-stone">
-              <p className="font-montserrat text-bronze text-sm font-500 uppercase tracking-wider mb-2">
-                Response Time
-              </p>
-              <p className="font-montserrat text-ink-navy text-lg">
-                We reply within one business day.
-              </p>
-            </div>
           </div>
 
           {/* Right - Contact Form */}
