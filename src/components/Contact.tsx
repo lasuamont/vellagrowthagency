@@ -55,9 +55,23 @@ export default function Contact() {
     setIsSubmitting(true);
     setSubmitStatus("idle");
     
-    // Simulate form submission (replace with actual API call)
+    // Send form data to Google Apps Script
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbynm8wtcaIUgwIzWFBV5Y2LW4pGlKvmRl_-sjgD5eQASBxvDQHyKBY6U5VbmXVatEVs/exec",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+      
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      
       setSubmitStatus("success");
       setFormData({
         name: "",
