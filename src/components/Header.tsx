@@ -79,7 +79,7 @@ export default function Header() {
               href="/#contact"
               onClick={(e) => handleNavClick(e, "/#contact")}
             >
-              Book a Free Audit
+              Book a Free Call
             </Button>
           </div>
 
@@ -115,7 +115,7 @@ export default function Header() {
                 onClick={(e) => handleNavClick(e, "/#contact")}
                 className="mt-4"
               >
-                Book a Free Audit
+                Book a Free Call
               </Button>
             </nav>
           </div>
