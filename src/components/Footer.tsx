@@ -21,7 +21,6 @@ export default function Footer() {
     { label: "Services", href: "/#services" },
     { label: "Why Vella", href: "/#why-vella" },
     { label: "Results", href: "/#results" },
-    { label: "Insights", href: "/#insights" },
     { label: "Contact", href: "/#contact" },
   ];
 
