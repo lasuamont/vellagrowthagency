@@ -3,6 +3,7 @@
 import { useState, FormEvent } from "react";
 import { Check, X, Mail, User, Building, Globe } from "lucide-react";
 import Button from "./Button";
+import { insertLead } from "@/lib/supabase/leads";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -55,19 +56,19 @@ export default function Contact() {
     setIsSubmitting(true);
     setSubmitStatus("idle");
     
-    // Send form data to Google Apps Script
+    // Send form data to Supabase
     try {
-      await fetch(
-        "https://script.google.com/macros/s/AKfycbwgLBdH7rJawKPpU6wOIpkNkE0kZVGuIH9e6rCI26ca4tLYzNBZ9SrzpwP4NwilS9zK/exec",
-        {
-          method: "POST",
-          mode: "no-cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const { error } = await insertLead({
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        website: formData.website,
+        consent: formData.consent,
+      });
+
+      if (error) {
+        throw error;
+      }
       
       setSubmitStatus("success");
       setFormData({
