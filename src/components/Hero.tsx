@@ -15,7 +15,7 @@ export default function Hero() {
       <div
         aria-hidden="true"
         className="absolute inset-0 scale-[1.02] bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/vella-hero.webp')" }}
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1752256682182-8165ad692c29?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000')" }}
       />
       <div
         aria-hidden="true"
