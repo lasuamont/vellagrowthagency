@@ -18,6 +18,14 @@ interface ArticleCard {
 
 const articles: ArticleCard[] = [
   {
+    id: "website-experience-turns-visitors-into-enquiries",
+    title: "Does Your Website Make It Easy to Choose You?",
+    excerpt: "A potential customer has found your business. Learn how a clearer, more reassuring website can help them understand your services and take the next step.",
+    date: "November 2026",
+    category: "Customer Experience",
+    href: "/blog/website-experience-turns-visitors-into-enquiries",
+  },
+  {
     id: "be-found-by-more-travellers",
     title: "How to Help More Travellers Discover Your Business Online",
     excerpt: "Your next customer may not know your name yet. Learn how to make your travel business easier to find, understand and trust when people start planning.",
