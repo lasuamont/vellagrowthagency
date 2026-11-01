@@ -49,13 +49,13 @@ export default function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled || !isHome
           ? "bg-cream/95 backdrop-blur-sm shadow-soft"
-          : "bg-transparent"
+          : "bg-ink-navy/40 backdrop-blur-md border-b border-cream/10"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Logo />
+          <Logo tone={isScrolled || !isHome ? "dark" : "light"} />
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
@@ -64,7 +64,7 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className="text-ink-navy hover:text-champagne transition-colors duration-200 font-montserrat text-sm font-500 tracking-wide"
+                className={`transition-colors duration-200 font-montserrat text-sm font-500 tracking-wide ${isScrolled || !isHome ? "text-ink-navy hover:text-bronze" : "text-cream hover:text-champagne"}`}
               >
                 {item.label}
               </Link>
@@ -78,6 +78,7 @@ export default function Header() {
               size="md"
               href="/#contact"
               onClick={(e) => handleNavClick(e, "/#contact")}
+              className={isScrolled || !isHome ? "" : "!bg-champagne !text-ink-navy !border-champagne hover:!bg-cream"}
             >
               Book a Free Call
             </Button>
@@ -85,7 +86,7 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-ink-navy hover:text-champagne transition-colors"
+            className={`md:hidden p-2 transition-colors ${isScrolled || !isHome ? "text-ink-navy hover:text-bronze" : "text-cream hover:text-champagne"}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMobileMenuOpen}
