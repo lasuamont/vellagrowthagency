@@ -18,6 +18,14 @@ interface ArticleCard {
 
 const articles: ArticleCard[] = [
   {
+    id: "turn-social-attention-into-travel-enquiries",
+    title: "How to Turn Social Media Attention into Travel Enquiries",
+    excerpt: "Learn how Facebook and Instagram advertising can introduce your travel business to relevant audiences, build interest and turn attention into meaningful enquiries.",
+    date: "November 2026",
+    category: "Paid Social",
+    href: "/blog/turn-social-attention-into-travel-enquiries",
+  },
+  {
     id: "reach-travellers-ready-to-search",
     title: "How to Reach Travellers Who Are Already Looking for What You Offer",
     excerpt: "Learn how to put your business in front of people actively searching for your services, focus your budget and turn relevant clicks into meaningful enquiries.",
