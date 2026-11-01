@@ -24,7 +24,7 @@ export default function PrivacyPolicy() {
                 1. Information We Collect
               </h2>
               <p className="font-montserrat text-ink-navy text-base leading-relaxed">
-                We collect information you provide directly to us, such as when you fill out our contact form, request a visibility audit, or communicate with us via email. This information may include your name, email address, company name, website URL, and any other information you choose to provide.
+                When you submit our contact form, we collect your name, email address, and message. We also record whether you accepted this Privacy Policy and the version of the policy shown when you submitted the form. We may also collect information you choose to provide when requesting a visibility audit or contacting us by email.
               </p>
             </section>
 
@@ -33,7 +33,7 @@ export default function PrivacyPolicy() {
                 2. How We Use Your Information
               </h2>
               <p className="font-montserrat text-ink-navy text-base leading-relaxed">
-                We use the information we collect to provide, maintain, and improve our services; to respond to your inquiries; to send you technical notices, updates, and support messages; and to communicate with you about our services.
+                We use contact form information to review and respond to your enquiry. We may also use information you provide through other channels to provide, maintain, and improve our services and to communicate with you about services you have asked about.
               </p>
             </section>
 
