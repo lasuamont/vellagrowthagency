@@ -220,7 +220,7 @@ export default function Contact() {
                 />
                 <div>
                   <label htmlFor="privacyPolicyAccepted" className="font-montserrat text-ink-navy text-sm leading-relaxed">
-                    I agree to Vella Growth collecting, storing and using the personal information I provide to respond to my enquiry, as described in the
+                    I consent to Vella Growth collecting, storing and using the personal information I provide to respond to my enquiry, as described in the
                   </label>{" "}
                   <Link
                     href="/privacy"
