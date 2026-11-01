@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import { Check, Mail, MessageSquare, User } from "lucide-react";
+import Link from "next/link";
 import Button from "./Button";
 import { insertLead } from "@/lib/supabase/leads";
 
@@ -11,6 +12,7 @@ export default function Contact() {
     email: "",
     message: "",
   });
+  const [privacyPolicyAccepted, setPrivacyPolicyAccepted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -32,6 +34,10 @@ export default function Contact() {
       newErrors.message = "Message is required";
     }
 
+    if (!privacyPolicyAccepted) {
+      newErrors.privacyPolicyAccepted = "Please accept the Privacy Policy to send your message.";
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -49,6 +55,8 @@ export default function Contact() {
         name: formData.name.trim(),
         email: formData.email.trim(),
         message: formData.message.trim(),
+        privacy_policy_accepted: true,
+        privacy_policy_version: "2026-10",
       });
 
       if (error) {
@@ -61,6 +69,7 @@ export default function Contact() {
         email: "",
         message: "",
       });
+      setPrivacyPolicyAccepted(false);
     } catch {
       setSubmitStatus("error");
     } finally {
@@ -78,6 +87,14 @@ export default function Contact() {
 
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
+  };
+
+  const handlePrivacyPolicyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPrivacyPolicyAccepted(e.target.checked);
+
+    if (errors.privacyPolicyAccepted) {
+      setErrors((prev) => ({ ...prev, privacyPolicyAccepted: "" }));
     }
   };
 
@@ -186,6 +203,40 @@ export default function Contact() {
                     {errors.message}
                   </p>
                 )}
+              </div>
+
+              {/* Required Privacy Policy acknowledgement */}
+              <div className="flex items-start gap-3">
+                <input
+                  type="checkbox"
+                  id="privacyPolicyAccepted"
+                  name="privacyPolicyAccepted"
+                  checked={privacyPolicyAccepted}
+                  onChange={handlePrivacyPolicyChange}
+                  required
+                  className="mt-1 w-4 h-4 shrink-0 rounded-[4px] border-2 border-ink-navy text-ink-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-champagne focus-visible:ring-offset-2 transition-colors"
+                  aria-invalid={!!errors.privacyPolicyAccepted}
+                  aria-describedby={errors.privacyPolicyAccepted ? "privacy-policy-error" : undefined}
+                />
+                <div>
+                  <label htmlFor="privacyPolicyAccepted" className="font-montserrat text-ink-navy text-sm leading-relaxed">
+                    I agree to Vella Growth collecting, storing and using the personal information I provide to respond to my enquiry, as described in the
+                  </label>{" "}
+                  <Link
+                    href="/privacy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-montserrat text-ink-navy text-sm underline underline-offset-2 hover:text-bronze transition-colors"
+                  >
+                    Privacy Policy
+                  </Link>
+                  <span className="font-montserrat text-ink-navy text-sm">.</span>
+                  {errors.privacyPolicyAccepted && (
+                    <p id="privacy-policy-error" className="font-montserrat text-red-500 text-sm mt-1" role="alert">
+                      {errors.privacyPolicyAccepted}
+                    </p>
+                  )}
+                </div>
               </div>
 
               {/* Submit Button */}
