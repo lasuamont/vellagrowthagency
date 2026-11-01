@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { Check, X, Mail, User, Building, Globe } from "lucide-react";
+import { Check, Mail, MessageSquare, User } from "lucide-react";
 import Button from "./Button";
 import { insertLead } from "@/lib/supabase/leads";
 
@@ -9,9 +9,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    company: "",
-    website: "",
-    consent: false,
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
@@ -19,66 +17,51 @@ export default function Contact() {
 
   const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {};
-    
+
     if (!formData.name.trim()) {
       newErrors.name = "Name is required";
     }
-    
+
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = "Please enter a valid email address";
     }
-    
-    if (!formData.company.trim()) {
-      newErrors.company = "Company is required";
+
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
     }
-    
-    if (!formData.website.trim()) {
-      newErrors.website = "Website is required";
-    } else if (!/^https?:\/\/.+/.test(formData.website)) {
-      newErrors.website = "Please enter a valid website URL (include http:// or https://)";
-    }
-    
-    if (!formData.consent) {
-      newErrors.consent = "Consent is required";
-    }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
-    
+
     setIsSubmitting(true);
     setSubmitStatus("idle");
-    
-    // Send form data to Supabase
+
     try {
       const { error } = await insertLead({
-        name: formData.name,
-        email: formData.email,
-        company: formData.company,
-        website: formData.website,
-        consent: formData.consent,
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        message: formData.message.trim(),
       });
 
       if (error) {
         throw error;
       }
-      
+
       setSubmitStatus("success");
       setFormData({
         name: "",
         email: "",
-        company: "",
-        website: "",
-        consent: false,
+        message: "",
       });
-    } catch (error) {
+    } catch {
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
@@ -86,17 +69,15 @@ export default function Contact() {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value, type } = e.target;
-    const checked = type === "checkbox" ? (e.target as HTMLInputElement).checked : undefined;
-    
-    setFormData(prev => ({
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: value,
     }));
-    
-    // Clear error when user starts typing
+
     if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: "" }));
+      setErrors((prev) => ({ ...prev, [name]: "" }));
     }
   };
 
@@ -111,9 +92,9 @@ export default function Contact() {
               Let&apos;s look at your visibility.
             </h2>
             <p className="font-montserrat text-ink-navy text-lg leading-relaxed mb-8">
-              Tell us a little about your business. We&apos;ll look at your online presence and identify opportunities worth exploring.
+              Tell us what you&apos;re working on and how we can help. We&apos;ll get back to you within one business day.
             </p>
-            
+
             <div className="bg-cream rounded-[16px] p-6 border border-stone">
               <p className="font-montserrat text-bronze text-sm font-500 uppercase tracking-wider mb-2">
                 Response Time
@@ -139,6 +120,7 @@ export default function Contact() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
+                  autoComplete="name"
                   className={`w-full px-4 py-3 rounded-[12px] border ${
                     errors.name ? "border-red-500" : "border-stone"
                   } bg-cream text-ink-navy placeholder-steel-silver/50 font-montserrat text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-champagne focus-visible:ring-offset-2 transition-colors`}
@@ -157,7 +139,7 @@ export default function Contact() {
               <div>
                 <label htmlFor="email" className="flex items-center gap-2 font-montserrat text-ink-navy text-sm font-500 mb-2">
                   <Mail size={16} className="text-steel-silver" />
-                  Work Email
+                  Email
                 </label>
                 <input
                   type="email"
@@ -165,10 +147,11 @@ export default function Contact() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
+                  autoComplete="email"
                   className={`w-full px-4 py-3 rounded-[12px] border ${
                     errors.email ? "border-red-500" : "border-stone"
                   } bg-cream text-ink-navy placeholder-steel-silver/50 font-montserrat text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-champagne focus-visible:ring-offset-2 transition-colors`}
-                  placeholder="your.name@company.com"
+                  placeholder="you@company.com"
                   aria-invalid={!!errors.email}
                   aria-describedby={errors.email ? "email-error" : undefined}
                 />
@@ -179,82 +162,30 @@ export default function Contact() {
                 )}
               </div>
 
-              {/* Company */}
+              {/* Message */}
               <div>
-                <label htmlFor="company" className="flex items-center gap-2 font-montserrat text-ink-navy text-sm font-500 mb-2">
-                  <Building size={16} className="text-steel-silver" />
-                  Company
+                <label htmlFor="message" className="flex items-center gap-2 font-montserrat text-ink-navy text-sm font-500 mb-2">
+                  <MessageSquare size={16} className="text-steel-silver" />
+                  Message
                 </label>
-                <input
-                  type="text"
-                  id="company"
-                  name="company"
-                  value={formData.company}
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
                   onChange={handleChange}
+                  rows={5}
                   className={`w-full px-4 py-3 rounded-[12px] border ${
-                    errors.company ? "border-red-500" : "border-stone"
-                  } bg-cream text-ink-navy placeholder-steel-silver/50 font-montserrat text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-champagne focus-visible:ring-offset-2 transition-colors`}
-                  placeholder="Your company name"
-                  aria-invalid={!!errors.company}
-                  aria-describedby={errors.company ? "company-error" : undefined}
+                    errors.message ? "border-red-500" : "border-stone"
+                  } bg-cream text-ink-navy placeholder-steel-silver/50 font-montserrat text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-champagne focus-visible:ring-offset-2 transition-colors resize-y`}
+                  placeholder="How can we help?"
+                  aria-invalid={!!errors.message}
+                  aria-describedby={errors.message ? "message-error" : undefined}
                 />
-                {errors.company && (
-                  <p id="company-error" className="font-montserrat text-red-500 text-sm mt-1">
-                    {errors.company}
+                {errors.message && (
+                  <p id="message-error" className="font-montserrat text-red-500 text-sm mt-1">
+                    {errors.message}
                   </p>
                 )}
-              </div>
-
-              {/* Website */}
-              <div>
-                <label htmlFor="website" className="flex items-center gap-2 font-montserrat text-ink-navy text-sm font-500 mb-2">
-                  <Globe size={16} className="text-steel-silver" />
-                  Website
-                </label>
-                <input
-                  type="url"
-                  id="website"
-                  name="website"
-                  value={formData.website}
-                  onChange={handleChange}
-                  className={`w-full px-4 py-3 rounded-[12px] border ${
-                    errors.website ? "border-red-500" : "border-stone"
-                  } bg-cream text-ink-navy placeholder-steel-silver/50 font-montserrat text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-champagne focus-visible:ring-offset-2 transition-colors`}
-                  placeholder="https://yourcompany.com"
-                  aria-invalid={!!errors.website}
-                  aria-describedby={errors.website ? "website-error" : undefined}
-                />
-                {errors.website && (
-                  <p id="website-error" className="font-montserrat text-red-500 text-sm mt-1">
-                    {errors.website}
-                  </p>
-                )}
-              </div>
-
-              {/* Consent */}
-              <div>
-                <label className="flex items-start gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    id="consent"
-                    name="consent"
-                    checked={formData.consent}
-                    onChange={handleChange}
-                    className="mt-1 w-4 h-4 rounded-[4px] border-2 border-ink-navy text-ink-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-champagne focus-visible:ring-offset-2 transition-colors"
-                    aria-invalid={!!errors.consent}
-                    aria-describedby={errors.consent ? "consent-error" : "consent-description"}
-                  />
-                  <div>
-                    <p className="font-montserrat text-ink-navy text-sm leading-relaxed" id="consent-description">
-                      I consent to Vella Growth storing and processing my personal data in accordance with the Privacy Policy to receive communications about the free visibility audit.
-                    </p>
-                    {errors.consent && (
-                      <p id="consent-error" className="font-montserrat text-red-500 text-sm mt-1">
-                        {errors.consent}
-                      </p>
-                    )}
-                  </div>
-                </label>
               </div>
 
               {/* Submit Button */}
@@ -274,10 +205,10 @@ export default function Contact() {
                 ) : submitStatus === "success" ? (
                   <>
                     <Check size={20} className="text-cream" />
-                    Request Received
+                    Message Sent
                   </>
                 ) : (
-                  "Request Your Audit"
+                  "Send Message"
                 )}
               </Button>
 
