@@ -18,6 +18,14 @@ interface ArticleCard {
 
 const articles: ArticleCard[] = [
   {
+    id: "reach-travellers-ready-to-search",
+    title: "How to Reach Travellers Who Are Already Looking for What You Offer",
+    excerpt: "Learn how to put your business in front of people actively searching for your services, focus your budget and turn relevant clicks into meaningful enquiries.",
+    date: "November 2026",
+    category: "Paid Visibility",
+    href: "/blog/reach-travellers-ready-to-search",
+  },
+  {
     id: "website-experience-turns-visitors-into-enquiries",
     title: "Does Your Website Make It Easy to Choose You?",
     excerpt: "A potential customer has found your business. Learn how a clearer, more reassuring website can help them understand your services and take the next step.",
