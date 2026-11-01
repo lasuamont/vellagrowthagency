@@ -18,6 +18,14 @@ interface ArticleCard {
 
 const articles: ArticleCard[] = [
   {
+    id: "ai-automation-for-travel-businesses",
+    title: "How AI Automation Can Give Your Travel Business More Time for Customers",
+    excerpt: "Discover practical ways to use AI to organise enquiries, prepare proposals and reduce repetitive admin—without losing the personal service customers value.",
+    date: "November 2026",
+    category: "AI & Automation",
+    href: "/blog/ai-automation-for-travel-businesses",
+  },
+  {
     id: "make-it-easier-to-book-online",
     title: "Make It Easier for Customers to Book and Buy From You Online",
     excerpt: "Learn how clearer offers, transparent pricing and a simpler booking journey can help turn interest in your travel services into reservations and sales.",
