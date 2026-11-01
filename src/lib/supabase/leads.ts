@@ -1,7 +1,7 @@
 import { getSupabase } from './client';
 import { Lead } from './types';
 
-export async function insertLead(lead: Omit<Lead, 'id' | 'created_at'>): Promise<{ data: Lead | null; error: Error | null }> {
+export async function insertLead(lead: Pick<Lead, 'name' | 'email' | 'message'>): Promise<{ data: Lead | null; error: Error | null }> {
   const { data, error } = await getSupabase()
     .from('leads')
     .insert([lead])
