@@ -18,6 +18,14 @@ interface ArticleCard {
 
 const articles: ArticleCard[] = [
   {
+    id: "be-found-by-more-travellers",
+    title: "How to Help More Travellers Discover Your Business Online",
+    excerpt: "Your next customer may not know your name yet. Learn how to make your travel business easier to find, understand and trust when people start planning.",
+    date: "November 2026",
+    category: "Growth",
+    href: "/blog/be-found-by-more-travellers",
+  },
+  {
     id: "conversion-funnel",
     title: "From LinkedIn to Qualified Leads: How Our Conversion Funnel Turns Prospects into Clients",
     excerpt: "Discover our five-stage conversion funnel strategy: LinkedIn post → Blog article → Live public webinar → Booking of a free demo. Learn how we attract, educate, and convert prospects into qualified leads.",
