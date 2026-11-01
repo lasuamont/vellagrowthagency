@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useEffect, useState, FormEvent } from "react";
 import { Check, Mail, MessageSquare, User } from "lucide-react";
 import Link from "next/link";
 import Button from "./Button";
@@ -13,6 +13,20 @@ export default function Contact() {
     message: "",
   });
   const [privacyPolicyAccepted, setPrivacyPolicyAccepted] = useState(false);
+
+  // A webinar CTA links here with ?topic=webinar and pre-fills the enquiry.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get("topic") === "webinar") {
+      setFormData((current) => ({
+        ...current,
+        message: current.message.trim()
+          ? current.message
+          : "I'm interested in registering for the next webinar. Please send me the details.",
+      }));
+    }
+  }, []);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
