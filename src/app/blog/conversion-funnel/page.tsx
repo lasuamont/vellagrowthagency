@@ -36,7 +36,12 @@ export default function ConversionFunnelArticle() {
             A complete guide to our five-stage approach for attracting and converting travel industry prospects
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="secondary" size="md">
+            <Button
+              variant="secondary"
+              size="md"
+              href="/?topic=webinar#contact"
+              className="!bg-cream !text-ink-navy !border-cream hover:!bg-stone"
+            >
               Register for Webinar
             </Button>
             <Button variant="primary" size="md" href="#contact">
@@ -342,7 +347,12 @@ export default function ConversionFunnelArticle() {
               Whether you&apos;re ready to register for our next webinar, book a free demo, or simply learn more about our services, we&apos;re here to help. Take the first step in your journey with Vella Growth today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="secondary" size="lg">
+              <Button
+                variant="secondary"
+                size="lg"
+                href="/?topic=webinar#contact"
+                className="!bg-cream !text-ink-navy !border-cream hover:!bg-stone"
+              >
                 Register for Webinar
               </Button>
               <Button variant="primary" size="lg" href="#contact">
