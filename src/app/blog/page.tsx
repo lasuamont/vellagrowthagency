@@ -18,6 +18,14 @@ interface ArticleCard {
 
 const articles: ArticleCard[] = [
   {
+    id: "make-it-easier-to-book-online",
+    title: "Make It Easier for Customers to Book and Buy From You Online",
+    excerpt: "Learn how clearer offers, transparent pricing and a simpler booking journey can help turn interest in your travel services into reservations and sales.",
+    date: "November 2026",
+    category: "Online Bookings",
+    href: "/blog/make-it-easier-to-book-online",
+  },
+  {
     id: "turn-social-attention-into-travel-enquiries",
     title: "How to Turn Social Media Attention into Travel Enquiries",
     excerpt: "Learn how Facebook and Instagram advertising can introduce your travel business to relevant audiences, build interest and turn attention into meaningful enquiries.",
